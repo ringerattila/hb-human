@@ -1,0 +1,1 @@
+A flutter könyvtárban található fájlok a teljes projekt csak egy kis részét mutatják, és demonstrációs céllal vannak közzé téve. Önmagukban - bár a valódi kódot mutatják - a többi fájl nélkül nem működőképesek.
