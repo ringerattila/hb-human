@@ -1,34 +1,23 @@
 
 import 'package:flutter/material.dart';
-//import 'package:flutter_html/style.dart';
 import 'package:hbhuman_v2/human_colors.dart';
 import 'package:hbhuman_v2/human_styles.dart';
-//import 'package:hbhuman_v2/human_types_and_vars.dart';
-//import 'package:hbhuman/human_types_and_vars.dart';
 
 
-///*****************************************************************************
-/// Általános, megjelenést befolyásoló konstansok
+// *****************************************************************************
+// Általános, megjelenést befolyásoló konstansok
 // Kártyák átlátszósága
 final Color cardOpacity = colorCardBackground.withOpacity(0.85);
 
 // Keresőcsík megjelenése
 InputDecoration decorationSearchInput = new InputDecoration(
-   //   filled: true,
-   //   fillColor: Colors.lightGreen,
   contentPadding: EdgeInsets.fromLTRB(5.0, 0, 0, 8.0),
-  //  border: const OutlineInputBorder(),
   hintText: "Keresés",
   hintStyle: textHintSearchInput,
 );
 
 
 ThemeData appTheme = new ThemeData(
-  //brightness: Brightness.light,
-  //primaryColor: Colors.green,
-
-  //fontFamily: 'Raleway',
-  //fontFamily: 'Roboto Regular',
   fontFamily: 'SF Pro Display Regular',
   primarySwatch: colorPrimarySwatch,  // themePrimaryColor,
   backgroundColor: colorThemeBackground,
@@ -72,9 +61,4 @@ ThemeData appTheme = new ThemeData(
 
 
 );
-
-//Theme(
-//data: Themedata(),
-//child: ExpansionTile(),
-//)
 

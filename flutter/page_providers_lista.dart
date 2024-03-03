@@ -1,8 +1,9 @@
-//****************************************************************************
-//  HB Helpdesk 2020-2022
-// (c) Ringer Attila
-//***************************************************************************
-
+/*
+****************************************************************************
+  HB Helpdesk 2020-2022
+ (c) Ringer Attila
+***************************************************************************
+*/
 
 import 'package:flutter/material.dart';
 import 'package:hbhuman_v2/human_styles.dart';
@@ -43,7 +44,6 @@ class ProvidersListaState extends State<ProvidersLista> {
    void initState(){
      //  A program elején már letöltöttük a listát this.getData();
   }
-
 
   @override
   Widget build(BuildContext context){

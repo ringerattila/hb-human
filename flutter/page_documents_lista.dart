@@ -1,9 +1,10 @@
-// ****************************************************************************
-// HB Helpdesk 2020-2021
-// (c) Ringer Attila
-// ****************************************************************************
+/*
+****************************************************************************
+ HB Helpdesk 2020-2022
+ (c) Ringer Attila
+****************************************************************************
+*/
 
-// import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:hbhuman_v2/human_constants.dart';
 import 'package:hbhuman_v2/human_themes.dart';
@@ -12,11 +13,8 @@ import 'package:hbhuman_v2/page_document_card.dart';
 import 'package:hbhuman_v2/human_colors.dart';
 import 'package:hbhuman_v2/human_styles.dart';
 import 'package:hbhuman_v2/human_common_widgets.dart';
-// import 'package:http/http.dart' as http;
 // Hajduhelp csomag
 import 'package:hajduhelp/hajduhelp_types_vars.dart';
-//import 'package:hajduhelp/hajduhelp.dart';
-//import 'package:hajduhelp/hajduhelp_constants.dart';
 
 // Dokumentum lista - kereséssel
 // bejövő paraméter: myDocuments
@@ -130,11 +128,7 @@ List<Document> documentFilter(String filter) {
         child: toListDocuments.length == 0
           ?  Center(
           child: Container( // telefonáló gomb
-            //      width:  MediaQuery.of(context).size.width * 0.7,
-            //     margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
-            //   width:  200,
             height: 40 * fontScale,
-            //     padding: EdgeInsets.fromLTRB(50, 5, 50, 5),
             child: ElevatedButton.icon(
               style: nincsTalalatButton,
               label: Text('Nincs találat', style: nincsTalalat),
@@ -200,6 +194,4 @@ List<Document> documentFilter(String filter) {
     );
   }
 }  // END class DocumentsLista
-
-//
 

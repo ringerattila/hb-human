@@ -4,9 +4,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 import 'dart:core';
-// import 'package:hb_helpdesk4/constants.dart';
 
-//import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:hbhuman_v2/human_styles.dart';
 import 'package:hbhuman_v2/human_types_and_vars.dart';
 import 'package:hbhuman_v2/main.dart';
@@ -15,47 +13,22 @@ import 'package:hbhuman_v2/services/debug_settings.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:flutter/material.dart';
-//import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import 'package:hbhuman_v2/human_constants.dart';
 import 'package:hbhuman_v2/human_colors.dart';
 import 'package:hbhuman_v2/human_themes.dart';
-//import 'package:webview_flutter/webview_flutter.dart';
-//import 'route_animation.dart';
 import 'package:hbhuman_v2/page_documents_lista.dart';
 import 'package:hbhuman_v2/page_provider_card.dart';
 import 'package:hbhuman_v2/human_html_show_local.dart';
 import 'package:map_launcher/map_launcher.dart';
 import 'package:hbhuman_v2/human_maps.dart';
 
-//import 'Constants.dart' as Constants;
 // Hajduhelp csomag
 import 'package:hajduhelp/hajduhelp_types_vars.dart';
 import 'package:hajduhelp/hajduhelp.dart';
 import 'package:hajduhelp/hajduhelp_constants.dart';
 import 'package:flutter_cached_pdfview/flutter_cached_pdfview.dart';
 
-/*
-void contactEmail(String emailCim) async {
-var uri = 'mailto:$emailCim?subject=$mailSubject&body=$mailBody';
-var encodedUri = Uri.encodeFull(uri);
-print('Encoded: $encodedUri');
-if (await canLaunchUrl(Uri.parse(encodedUri))) {
-  await launchUrl(Uri.parse(encodedUri));
-  }
-}
-*/
-/*
-void hajduhelpLaunchUrl(String url) async {
-  var _uri = Uri.parse(Uri.encodeFull(url));  // ékezetes betűket, szünetet kódoljuk
-  printDebugMessage(debugSystem, 'Encoded: $_uri');
-  if (await canLaunchUrl(_uri)) {
-    await launchUrl(_uri);
-    } else {
-      printDebugMessage(debugSystem, 'Nem nyitható meg.');
-      }
-}  // end of hajduhelpLaunchUrl
-*/
 
 Future<void> hajduhelpLaunchUrl(String url) async {
   var _uri = Uri.parse(Uri.encodeFull(url));  // ékezetes betűket, szünetet kódoljuk
@@ -86,20 +59,6 @@ Future<void> hajduhelpLaunchPdf(String url) async {
     throw 'Nem nyitható meg';
   }
 }  // end of hajduhelpLaunchUrl
-
-
-
-
-/*
-Future<void> _launchUrl() async {
-  if (!await launchUrl(_url)) {
-    throw 'Could not launch $_url';
-  }
-}
-*/
-
-
-
 
 
 // felső Appbar - A Titlé-t a myMenuItem.myMTitle változóból írja ki
@@ -197,17 +156,7 @@ Widget noOpenUrl(String myTitle) {
   );
 } //
 
-/*
-// Dokumentum megnyitása
-Future<Widget> myOpenUrl(String showUrl) async {
-  if (await canLaunch(showUrl)) {
-    await launch(showUrl);
-    } else {
-    return noOpenUrl("Nem nyitható");
-    throw 'Could not launch $showUrl';
-  }
-}
-*/
+
 void  myOpenUrl(Uri showUrl) async =>
   await canLaunchUrl(showUrl) ? await launchUrl(showUrl) : throw 'Could not launch $showUrl';
 
@@ -252,37 +201,6 @@ Widget ugyBoldRow(String myRow) {
     ),
   );
 }
-/*
-//
-class PageWebView extends StatefulWidget {
-  final String pageUrl;
-  PageWebView(this.pageUrl);
-
-  // Constants.MyMenuItem myMenuItem;
-  @override
-  PageWebViewState createState() => PageWebViewState(pageUrl);
-}
-
-class PageWebViewState extends State<PageWebView> {
-  String pageUrl;
-  PageWebViewState(this.pageUrl);
-
-  @override
-  void initState() {
-    super.initState();
-    // Enable hybrid composition
-    if (Platform.isAndroid) WebView.platform = SurfaceAndroidWebView();
-  }
-  @override
-  Widget build(BuildContext context) {
-    return WebView(
-   //   initialUrl: myAktMenuItem.myMTarget,
-      initialUrl: pageUrl,
-      javascriptMode: JavascriptMode.unrestricted,
-    );
-  }
-}
-*/
 
 Widget getProvName(String provid) {
   var provIndex = myProvidersLista.indexWhere((provider) =>
@@ -481,7 +399,6 @@ Widget jsonErrorPage(BuildContext context) {
 
 
 
-                //          Text('JSON error'),
               ],
             ),
           ),
@@ -573,37 +490,6 @@ class ProviderDocuments extends StatelessWidget {
   }
 }
 
-/*
-  class ProviderMaps extends StatelessWidget {
-    final Provider myProvider;
-
-    ProviderMaps(this.myProvider);
-
-    //final availableMaps = await MapLauncher.installedMaps;
-    //print(availableMaps); // [AvailableMap { mapName: Google Maps, mapType: google }, ...]
-
-    //await availableMaps.first.showMarker(
-    //coords: Coords(37.759392, -122.5107336),
-    //title: "Ocean Beach",
-    //);
-
-    @override
-    Widget build(BuildContext context) {
-      //  serviceFilter(myProvid);
-//    getMaps();
-      var mapUrl = urlShowMap + '/' + myProvider.provid;
-      // launch(mapUrl);
-      return Scaffold(
-        appBar: myAppBar('TÉRKÉP', noShare),
-        body: Text('Térkép'),
-  //      WebView(
-  //        initialUrl: mapUrl,
-  //        javascriptMode: JavascriptMode.unrestricted,),
-        bottomNavigationBar: myBottomAppBar(context),
-      );
-    } // class ProviderMaps
-  }
-*/
 void startMap(BuildContext context, String myTitle, String lat, String long) {
   printDebugMessage(debugSystem, "Title: " + myTitle + 'Coord: ' + lat + ' - ' + long);
   if (Platform.isAndroid) {
@@ -618,8 +504,6 @@ _launchAppleMaps(myTitle, lat, long);
   }
 
 }
-
-
 
 void _launchAppleMaps(String myTitle, String lat, String long) async {
   var myLat = double.parse(lat);

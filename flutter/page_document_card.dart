@@ -1,7 +1,9 @@
-// ****************************************************************************
-// HB Helpdesk 2020-2021
-// (c) Ringer Attila
-// ****************************************************************************
+/*
+****************************************************************************
+   HB Helpdesk 2020-2022
+  (c) Ringer Attila
+****************************************************************************
+*/
 
 import 'package:flutter/material.dart';
 import 'package:hbhuman_v2/human_constants.dart';
@@ -9,18 +11,13 @@ import 'package:hbhuman_v2/human_styles.dart';
 import 'package:hbhuman_v2/human_themes.dart';
 import 'package:hbhuman_v2/human_common_widgets.dart';
 import 'package:hbhuman_v2/human_types_and_vars.dart';
-//import 'route_animation.dart';
 import 'package:hbhuman_v2/human_colors.dart';
-//import 'package:url_launcher/url_launcher.dart';
 // Hajduhelp csomag
 import 'package:hajduhelp/hajduhelp_types_vars.dart';
-//import 'package:hajduhelp/hajduhelp.dart';
-//import 'package:hajduhelp/hajduhelp_constants.dart';
 
 
 // Dokumentum kártya mutatása
 // Bejövő paraméter: Document típus
-
 class DocumentCard extends StatefulWidget {
   final Document curDocument; // a megjelenítendő dokumentum
   DocumentCard(this.curDocument);
@@ -45,11 +42,7 @@ class DocumentCardState extends State<DocumentCard> {
     super.dispose();
   }  // dispose
 
-  //this.setState() {
-
-//}
-
-
+  
   @override
   Widget build(BuildContext context){
     String provId = curDocument.provid;  // Megkeressük a szolgáltató nevét
@@ -71,7 +64,6 @@ class DocumentCardState extends State<DocumentCard> {
               child: Center(
                 child: Card(
                   shape: RoundedRectangleBorder(
-           //         side: BorderSide(color: colorDocumentCardBorder, width: 0),
                     borderRadius: BorderRadius.all(Radius.circular(10.0)),
                   ),
                   elevation: 5, // 10
@@ -95,17 +87,13 @@ class DocumentCardState extends State<DocumentCard> {
                             elevation: 5,
                             backgroundColor: colorButton,
                             foregroundColor: colorButtonText,
-                         //   padding: EdgeInsets.all(0),
                             ),
 
                           child: Text('MEGNÉZEM', style: textTelefon,),
                           onPressed: () {
                               var url = urlPDFDownload + pathToPdf;
-                           //   var _url = Uri.tryParse(url);
                               hajduhelpLaunchUrl(url);
-//                              hajduhelpLaunchPdf(url);
-                           //   myOpenUrl(_url!);
-//                              launch(url); //}
+//                  
                            } // onPressed
                         ),
                       ),
@@ -179,28 +167,12 @@ class DocumentCardState extends State<DocumentCard> {
                               padding: EdgeInsets.symmetric(horizontal: 7),
                               child: Image.asset('assets/images/hb_cimer_transparent@3.png'),
                                   width: 80 * circleIconScale,
-
-                              //Image.asset('assets/images/providers/' +
-                             //     myProvider.indexpic.toString(), height: 50,
-                              //  width: 50,),
                             ),
-
-
-
-                          //  CircleAvatar(
-                          //    backgroundImage: curDocument.provid == "117"
-                          //        ?  AssetImage(iconKorm)  : AssetImage(iconHbosz),
-                          //    radius: 20 * circleIconScale, ),
 
                             Padding(
                               padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 0),
                               child: InkWell(
-                          //      onTap: () {
-                               //   myAktMenuItem = provPage;
-                          //        Navigator.push(context,
-                           //           MaterialPageRoute(builder: (context) => PageShow()));
-                         //       },
-                                child: Column(
+                                         child: Column(
                                   children: [
                                     Center( child: getProvName(curDocument.provid)),
                                     getProvAddress(curDocument.provid),

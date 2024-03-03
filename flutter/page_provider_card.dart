@@ -1,31 +1,22 @@
-// ****************************************************************************
-// HB Helpdesk 2020-2021
-// (c) Ringer Attila
-// ****************************************************************************
+/*
+****************************************************************************
+  HB Helpdesk 2020-2022
+  (c) Ringer Attila
+****************************************************************************
+*/
 
 import 'dart:core';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hbhuman_v2/services/debug_settings.dart';
-//import 'package:hbhuman/main.dart';
-//import 'dart:io';
-//import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_html/flutter_html.dart';
-//import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-//import 'helpdesk_common_widgets.dart';
-// Saját csomagok
-//import 'route_animation.dart';
 import 'package:hbhuman_v2/human_common_widgets.dart';
 import 'package:hbhuman_v2/human_colors.dart';
 import 'package:hbhuman_v2/human_styles.dart';
 import 'package:hbhuman_v2/human_themes.dart';
 import 'package:hbhuman_v2/human_constants.dart';
-//import 'html_style.dart';
 import 'package:hbhuman_v2/human_types_and_vars.dart';
-//import 'package:hbhuman/page_documents_lista.dart';
 import 'package:hbhuman_v2/page_services_lista.dart';
-//import 'package:flutter_html/style.dart';
-//import 'page_telefonkonyv_lista.dart';
 // Hajduhelp csomag
 import 'package:hajduhelp/hajduhelp_types_vars.dart';
 import 'package:hajduhelp/hajduhelp.dart';
@@ -39,9 +30,6 @@ class ShowProvider extends StatelessWidget {
 //
   @override
   Widget build(BuildContext context) {
-    //   if (myOsztaly.osztalyNeve  == '') { bHivatal = true} else { bHivatal = false};
-//   var fMeret = appTheme.textTheme.headline6.fontSize.toString();
-//    print('Méret: $fMeret');
     return Scaffold(
       appBar: myAppBar('SZOLGÁLTATÓ', noShare),
       body: ListView(
@@ -81,21 +69,6 @@ Widget showHtmlSection(BuildContext context, String htmlContent) {
           htmlClosingString, //html string to be parsed
 
         style: humanHtmlStyle,
-     /*   onLinkTap: (url) {
-      //        setState(() {
-        if (url.toString().contains('tel')) {
-          launch(url);
-          } else {
-            myAktMenuItem.myMTarget = url;
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) =>
-                PageShow()
-            )
-        ); // push
-        }  // else
-        }, // onLinkTap
-        */
-    //    onImageTap: (src) { },
       ),
   ]
    );
@@ -105,10 +78,8 @@ Widget showHtmlSection(BuildContext context, String htmlContent) {
 Widget showProviderCard(BuildContext context, Provider myProvider)  {
 
   return Column(
-        //  child: Center(
           children: <Widget> [
             Container( // cím
-   //           color: colorCardBackground,
               color: colorCardBackground,
               padding: EdgeInsets.all(2),
               child: Center(
@@ -129,11 +100,6 @@ Widget showProviderCard(BuildContext context, Provider myProvider)  {
                 ),
               ),
             ),
-         //   providerTelButton(myProvider.mobil, myProvider.callnumber),
-
-         //   providerEmailButton(myProvider.email),
-         //   providerDocuments(myProvider.provid),
-         //   providerServices(myProvider.provid),
             myDivider(),
             Row(
               children: [
@@ -152,7 +118,6 @@ Widget showProviderCard(BuildContext context, Provider myProvider)  {
             ),
             myDivider(),
 
-          //  showHtmlSection(context, myProvider.szoveg)
             ]
   );
 
@@ -194,36 +159,18 @@ Widget providerIcon(BuildContext ctxt, IconData myIcon, String myTitle, String m
                 switch(myCmd) {
                   case CmdIcon.cmdPhone : {
                     hajduhelpLaunchUrl('tel:' + myProvider.callnumber);
-              /*
-                    printDebugMessage(debugSystem, 'Telefonszám: ' + myProvider.callnumber);
-                    if (await canlaunchUrl(Uri.parse('tel:' + myProvider.callnumber))) {
-                await launchUrl(Uri.parse(encodedUri));
-                }
-                    launchUrl(Uri.parse('tel:' + myProvider.callnumber)); //  myAktMenuItem = myMenuItem;
-*/
                   } break;
 
                   case CmdIcon.cmdWebpage : {
                     hajduhelpLaunchUrl(myProvider.web);
-/*
-                    printDebugMessage(debugSystem, 'Honlap: ' + myProvider.web);
-                    var myUrl = myProvider.web;
-                    launchUrl(Uri.parse(myUrl)); //  myAktMenuItem = myMenuItem;
-*/
                   } break;
 
                   case CmdIcon.cmdFacebook : {
                     hajduhelpLaunchUrl(myProvider.facebook);
-                    /*
-                    printDebugMessage(debugSystem, 'Facebook: ' + myProvider.facebook);
-                    var myUrl = Uri.encodeFull(myProvider.facebook);
-                    launchUrl(Uri.parse(myUrl)); //  myAktMenuItem = myMenuItem;
-                    */
                   } break;
 
                   case CmdIcon.cmdEmail : {
                     printDebugMessage(debugSystem, 'Email: ' + myProvider.email);
-               //     contactEmail(myProvider.email);
                     startEmail(
                       emailAddress: myProvider.email,
                       emailSubject: 'Érdeklődés',
@@ -243,9 +190,6 @@ Widget providerIcon(BuildContext ctxt, IconData myIcon, String myTitle, String m
                     //       Navigator.of(myContext).push(createRoute(PageShow()));
                   } break;
                 } // switch
-
-
-
 
               },
               child: Icon(myIcon, size: 30, color: Colors.white,),
@@ -273,8 +217,6 @@ Widget myDivider() {
       height: 2,
       color: colorMainMenuItem,
     ),
-   // color: colorCardBackground,
-    //margin: EdgeInsets.fromLTRB(20, 10, 20, 10),
 
   );
 }
@@ -298,9 +240,6 @@ class ProviderServices extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-  //  serviceFilter(myProvid);
-//    myUrl = urlUgyek;
-    // Meghatározzuk az azonosítóhoz tartozó szolgáltatót
     final myProvider = myProvidersLista.firstWhere((element) => element.provid == myProvid);
 
     return Scaffold(
@@ -308,5 +247,4 @@ class ProviderServices extends StatelessWidget {
     );
   }
 }
-
 
